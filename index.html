@@ -3,157 +3,127 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Merry Christmas</title>
+<title>Christmas Surprise</title>
 <style>
+    @import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Roboto&display=swap');
+
     body {
-        font-family: 'Arial', sans-serif;
-        background: linear-gradient(to right, #ffecd2, #fcb69f);
+        margin: 0;
+        padding: 0;
+        font-family: 'Roboto', sans-serif;
+        background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
+        height: 100vh;
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        min-height: 100vh;
-        margin: 0;
-        color: #333;
-        text-align: center;
-    }
-    .card {
-        background: rgba(255, 255, 255, 0.85);
-        backdrop-filter: blur(10px);
-        padding: 30px;
-        border-radius: 20px;
-        box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-        max-width: 400px;
-        width: 90%;
-    }
-    h1 {
-        color: #d92e2e;
-        margin-bottom: 10px;
-    }
-    p {
-        font-size: 1.1em;
-        margin-bottom: 20px;
-    }
-    .music-title {
-        font-weight: bold;
-        margin-bottom: 15px;
-    }
-    button {
-        background-color: #d92e2e;
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        margin: 5px;
-        border-radius: 10px;
-        cursor: pointer;
-        font-size: 1em;
-    }
-    button:hover {
-        background-color: #b52a2a;
+        overflow: hidden;
     }
 
-    /* Christmas light circle */
-    .lights-circle {
-        margin-top: 30px;
-        width: 150px;
-        height: 150px;
-        border-radius: 50%;
+    h1 {
+        font-family: 'Luckiest Guy', cursive;
+        color: #fff;
+        text-shadow: 2px 2px 5px #000;
+        font-size: 3em;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    p {
+        color: #fff;
+        font-size: 1.2em;
+        text-align: center;
+        margin-bottom: 30px;
+        text-shadow: 1px 1px 3px #000;
+    }
+
+    .buttons {
         display: flex;
         justify-content: center;
-        align-items: center;
+        gap: 20px;
         flex-wrap: wrap;
     }
-    .light {
-        width: 20px;
-        height: 20px;
-        margin: 3px;
-        border-radius: 50%;
-        background-color: red;
-        box-shadow: 0 0 10px #fff;
-        transition: background-color 0.3s, box-shadow 0.3s;
+
+    button {
+        padding: 15px 30px;
+        font-size: 1.1em;
+        border: none;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-family: 'Roboto', sans-serif;
+        background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+        color: #fff;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     }
+
+    button:hover {
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    }
+
+    .monthsary { background: linear-gradient(135deg, #ff6f61, #ff9472); }
+    .sorry { background: linear-gradient(135deg, #6a5acd, #836fff); }
+    .christmas { background: linear-gradient(135deg, #00b894, #55efc4); }
+
+    .download-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 25px;
+        flex-wrap: wrap;
+    }
+
+    .download-buttons a {
+        padding: 8px 15px;      
+        border-radius: 10px;    
+        text-decoration: none;
+        font-size: 0.9em;       
+        color: #fff;
+        background: linear-gradient(135deg, #fdcb6e, #ffb347);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        transition: all 0.3s ease;
+    }
+
+    .download-buttons a:hover {
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+    }
+
 </style>
 </head>
 <body>
-<div class="card">
-    <h1>Merry Christmas!</h1>
-    <p>Dear family, wishing you joy, love, and laughter this holiday season. </p>
-    <div class="music-title"> Music: "Family Christmas Joy"</div>
 
-    <!-- Two separate audio elements -->
-    <audio id="music1" src="https://files.catbox.moe/1n4h2u.mp3"></audio>
-    <audio id="music2" src="https://files.catbox.moe/jouw8d.mp3"></audio>
+<h1>Merry Christmas, My Love!</h1>
+<p>Hi Adii ðŸ’–,<br>Wishing you joy, love, and laughter this Christmas. Thank you for always being there for me. I love you! ðŸŽ„â¤ï¸<br><strong>Click each button below to play a special song for you!</strong></p>
 
-    <div>
-        <!-- Play buttons -->
-        <button onclick="document.getElementById('music1').play()">Play Music 1</button>
-        <button onclick="document.getElementById('music2').play()">Play Music 2</button>
-
-        <!-- Pause buttons -->
-        <button onclick="document.getElementById('music1').pause()">Pause Music 1</button>
-        <button onclick="document.getElementById('music2').pause()">Pause Music 2</button>
-
-        <!-- Download buttons -->
-        <a href="https://files.catbox.moe/1n4h2u.mp3" download>
-            <button>Download Music 1</button>
-        </a>
-        <a href="https://files.catbox.moe/jouw8d.mp3" download>
-            <button>Download Music 2</button>
-        </a>
-    </div>
-
-    <!-- Christmas lights below buttons -->
-    <div class="lights-circle" id="lightsCircle"></div>
+<div class="buttons">
+    <button class="monthsary" onclick="playMusic('music1')">Monthsary</button>
+    <button class="sorry" onclick="playMusic('music2')">Sorry</button>
+    <button class="christmas" onclick="playMusic('music3')">Christmas</button>
 </div>
 
+<div class="download-buttons">
+    <a href="https://files.catbox.moe/sevku3.mp3" download>Download Monthsary</a>
+    <a href="https://files.catbox.moe/4e75cz.mp3" download>Download Sorry</a>
+    <a href="https://files.catbox.moe/j2mc9c.mp3" download>Download Christmas</a>
+</div>
+
+<!-- Audio with preload for faster playback -->
+<audio id="music1" src="https://files.catbox.moe/sevku3.mp3" preload="auto"></audio>
+<audio id="music2" src="https://files.catbox.moe/4e75cz.mp3" preload="auto"></audio>
+<audio id="music3" src="https://files.catbox.moe/j2mc9c.mp3" preload="auto"></audio>
+
 <script>
-const music1 = document.getElementById('music1');
-const music2 = document.getElementById('music2');
-const lightsCircle = document.getElementById('lightsCircle');
-let colorInterval;
-
-// Generate 16 lights
-for (let i = 0; i < 16; i++) {
-    const light = document.createElement('div');
-    light.className = 'light';
-    lightsCircle.appendChild(light);
+function playMusic(id) {
+    ['music1','music2','music3'].forEach(m => {
+        const audio = document.getElementById(m);
+        audio.pause();
+        audio.currentTime = 0;
+    });
+    document.getElementById(id).play();
 }
-const lights = document.querySelectorAll('.light');
-
-function getRandomColor() {
-    const colors = ['red', 'green', 'yellow', 'blue', 'orange', 'purple', 'pink'];
-    return colors[Math.floor(Math.random() * colors.length)];
-}
-
-function startLights() {
-    if (!colorInterval) {
-        colorInterval = setInterval(() => {
-            lights.forEach(light => {
-                light.style.backgroundColor = getRandomColor();
-                light.style.boxShadow = `0 0 15px ${getRandomColor()}`;
-            });
-        }, 300);
-    }
-}
-
-function stopLights() {
-    // Stop lights only if both musics are paused
-    if (music1.paused && music2.paused) {
-        clearInterval(colorInterval);
-        colorInterval = null;
-        lights.forEach(light => {
-            light.style.backgroundColor = 'red';
-            light.style.boxShadow = '0 0 10px #fff';
-        });
-    }
-}
-
-// Attach events to both music tracks
-[music1, music2].forEach(music => {
-    music.addEventListener('play', startLights);
-    music.addEventListener('pause', stopLights);
-    music.addEventListener('ended', stopLights);
-});
 </script>
+
 </body>
 </html>
