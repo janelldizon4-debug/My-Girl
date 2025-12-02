@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Merry Christmas</title>
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background: linear-gradient(to right, #ffecd2, #fcb69f);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        min-height: 100vh;
+        margin: 0;
+        color: #333;
+        text-align: center;
+    }
+    .card {
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(10px);
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        max-width: 400px;
+        width: 90%;
+    }
+    h1 {
+        color: #d92e2e;
+        margin-bottom: 10px;
+    }
+    p {
+        font-size: 1.1em;
+        margin-bottom: 20px;
+    }
+    .music-title {
+        font-weight: bold;
+        margin-bottom: 15px;
+    }
+    button {
+        background-color: #d92e2e;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        margin: 5px;
+        border-radius: 10px;
+        cursor: pointer;
+        font-size: 1em;
+    }
+    button:hover {
+        background-color: #b52a2a;
+    }
+
+    /* Christmas light circle */
+    .lights-circle {
+        margin-top: 30px;
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+    .light {
+        width: 20px;
+        height: 20px;
+        margin: 3px;
+        border-radius: 50%;
+        background-color: red;
+        box-shadow: 0 0 10px #fff;
+        transition: background-color 0.3s, box-shadow 0.3s;
+    }
+</style>
+</head>
+<body>
+<div class="card">
+    <h1>Merry Christmas!</h1>
+    <p>Dear family, wishing you joy, love, and laughter this holiday season. </p>
+    <div class="music-title"> Music: "Family Christmas Joy"</div>
+
+    <!-- Two separate audio elements -->
+    <audio id="music1" src="https://files.catbox.moe/1n4h2u.mp3"></audio>
+    <audio id="music2" src="https://files.catbox.moe/jouw8d.mp3"></audio>
+
+    <div>
+        <!-- Play buttons -->
+        <button onclick="document.getElementById('music1').play()">Play Music 1</button>
+        <button onclick="document.getElementById('music2').play()">Play Music 2</button>
+
+        <!-- Pause buttons -->
+        <button onclick="document.getElementById('music1').pause()">Pause Music 1</button>
+        <button onclick="document.getElementById('music2').pause()">Pause Music 2</button>
+
+        <!-- Download buttons -->
+        <a href="https://files.catbox.moe/1n4h2u.mp3" download>
+            <button>Download Music 1</button>
+        </a>
+        <a href="https://files.catbox.moe/jouw8d.mp3" download>
+            <button>Download Music 2</button>
+        </a>
+    </div>
+
+    <!-- Christmas lights below buttons -->
+    <div class="lights-circle" id="lightsCircle"></div>
+</div>
+
+<script>
+const music1 = document.getElementById('music1');
+const music2 = document.getElementById('music2');
+const lightsCircle = document.getElementById('lightsCircle');
+let colorInterval;
+
+// Generate 16 lights
+for (let i = 0; i < 16; i++) {
+    const light = document.createElement('div');
+    light.className = 'light';
+    lightsCircle.appendChild(light);
+}
+const lights = document.querySelectorAll('.light');
+
+function getRandomColor() {
+    const colors = ['red', 'green', 'yellow', 'blue', 'orange', 'purple', 'pink'];
+    return colors[Math.floor(Math.random() * colors.length)];
+}
+
+function startLights() {
+    if (!colorInterval) {
+        colorInterval = setInterval(() => {
+            lights.forEach(light => {
+                light.style.backgroundColor = getRandomColor();
+                light.style.boxShadow = `0 0 15px ${getRandomColor()}`;
+            });
+        }, 300);
+    }
+}
+
+function stopLights() {
+    // Stop lights only if both musics are paused
+    if (music1.paused && music2.paused) {
+        clearInterval(colorInterval);
+        colorInterval = null;
+        lights.forEach(light => {
+            light.style.backgroundColor = 'red';
+            light.style.boxShadow = '0 0 10px #fff';
+        });
+    }
+}
+
+// Attach events to both music tracks
+[music1, music2].forEach(music => {
+    music.addEventListener('play', startLights);
+    music.addEventListener('pause', stopLights);
+    music.addEventListener('ended', stopLights);
+});
+</script>
+</body>
+</html>
