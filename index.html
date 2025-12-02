@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Christmas Surprise</title>
+
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Roboto&display=swap');
 
@@ -18,6 +19,32 @@
         align-items: center;
         flex-direction: column;
         overflow: hidden;
+        position: relative;
+    }
+
+    /* SNOW CONTAINER */
+    #snowContainer {
+        position: fixed;
+        top: 0; 
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        pointer-events: none;
+        z-index: 9999;
+    }
+
+    /* SNOWFLAKES */
+    .snowflake {
+        position: absolute;
+        top: -20px;
+        font-size: 16px;
+        opacity: 0.9;
+        animation: snowfall linear infinite;
+    }
+
+    @keyframes snowfall {
+        0% { transform: translateY(0) rotate(0deg); }
+        100% { transform: translateY(110vh) rotate(360deg); }
     }
 
     h1 {
@@ -27,6 +54,7 @@
         font-size: 3em;
         margin-bottom: 10px;
         text-align: center;
+        z-index: 10;
     }
 
     p {
@@ -35,6 +63,7 @@
         text-align: center;
         margin-bottom: 30px;
         text-shadow: 1px 1px 3px #000;
+        z-index: 10;
     }
 
     .buttons {
@@ -42,6 +71,7 @@
         justify-content: center;
         gap: 20px;
         flex-wrap: wrap;
+        z-index: 10;
     }
 
     button {
@@ -72,6 +102,7 @@
         gap: 10px;
         margin-top: 25px;
         flex-wrap: wrap;
+        z-index: 10;
     }
 
     .download-buttons a {
@@ -94,8 +125,11 @@
 </head>
 <body>
 
+<!-- SNOW LAYER -->
+<div id="snowContainer"></div>
+
 <h1>Merry Christmas, My Love!</h1>
-<p>Hi Adii ðŸ’–,<br>Wishing you joy, love, and laughter this Christmas. Thank you for always being there for me. I love you! ðŸŽ„â¤ï¸<br><strong>Click each button below to play a special song for you!</strong></p>
+<p>Hi Adii 💖,<br>Wishing you joy, love, and laughter this Christmas. Thank you for always being there for me. I love you! 🎄❤️<br><strong>Click each button below to play a special song for you!</strong></p>
 
 <div class="buttons">
     <button class="monthsary" onclick="playMusic('music1')">Monthsary</button>
@@ -109,7 +143,7 @@
     <a href="https://files.catbox.moe/j2mc9c.mp3" download>Download Christmas</a>
 </div>
 
-<!-- Audio with preload for faster playback -->
+<!-- AUDIO -->
 <audio id="music1" src="https://files.catbox.moe/sevku3.mp3" preload="auto"></audio>
 <audio id="music2" src="https://files.catbox.moe/4e75cz.mp3" preload="auto"></audio>
 <audio id="music3" src="https://files.catbox.moe/j2mc9c.mp3" preload="auto"></audio>
@@ -123,6 +157,38 @@ function playMusic(id) {
     });
     document.getElementById(id).play();
 }
+
+// ❄ SNOWFLAKES — Blue, Skyblue, Red, Pink
+const snowContainer = document.getElementById("snowContainer");
+
+function createSnowflake() {
+    const flake = document.createElement("div");
+    flake.classList.add("snowflake");
+    flake.textContent = "❄";
+
+    // Random position
+    flake.style.left = Math.random() * 100 + "vw";
+
+    // Random size
+    flake.style.fontSize = Math.random() * 12 + 10 + "px";
+
+    // Random duration
+    const duration = Math.random() * 8 + 6;
+    flake.style.animationDuration = duration + "s";
+
+    // COLORS: blue, skyblue, red, pink
+    const colors = ["#3fa9f5", "#87ceeb", "#ff4d6d", "#ff99cc"];
+    flake.style.color = colors[Math.floor(Math.random() * colors.length)];
+
+    snowContainer.appendChild(flake);
+
+    // Remove after fall
+    setTimeout(() => flake.remove(), duration * 1000);
+}
+
+// Create snowflake every 150ms
+setInterval(createSnowflake, 150);
+
 </script>
 
 </body>
